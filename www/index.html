@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Marty Command Hub Plus</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+         @font-face {
+             font-family: "BigNoodleTitling";
+             src: url("./res/big_noodle_titling.woff") format('woff');
+         }
+         @font-face {
+             font-family: "LatoWeb";
+             src: url("./res/Lato-Regular.woff") format('woff');
+         }
+         
+         html, body {
+             width: 100%;
+             height: 100%;
+             min-width: 320px;
+             padding: 0;
+             margin: 0;
+             box-sizing: border-box;
+             background-color: #73c4d9;
+             color: #222;
+             font-size: 12pt;
+             font-family: 'LatoWeb', helvetica, helvetica-neue, Arial, sans-serif;
+             line-height: 1.7em;
+         }
+
+         a, a:visited {
+             color: #27788c;
+             text-decoration: none;
+         }
+
+         a:hover {
+             text-decoration: underline;
+         }
+
+         a img {
+             border: 0;
+             outline: none;
+         }
+         
+         h1, h2, h3, h4, h5, h6 {
+             font-family: inherit;
+             font-weight: normal;
+             margin: 0.5em 0 0.2em 0;
+         }
+
+         h1 {
+             font-family: "BigNoodleTitling", Impact, sans-serif;
+         }
+         h2, h3, h4, h5, h6 {
+             font-weight: bold;
+         }
+
+         h1 {
+             font-size: 30px;
+         }
+         
+         .container {
+             width: 100%;
+             margin: 0;
+         }
+
+         @media (min-width: 480px){
+             .container {
+                 max-width: 480px;
+                 margin: 0 auto;
+             }
+         }
+
+         @media (min-width: 820px){
+             .container {
+                 max-width: 800px;
+             }
+         }
+
+         .card {
+             background: #fff;
+             margin: 2rem 1rem;
+             margin-bottom: 0;
+             padding: 2rem;
+             border-radius: 0.25rem;
+             box-shadow: 0rem 0.1rem 0.4rem 0rem rgba(0,0,0,0.1);
+             transition: box-shadow 0.3s ease;
+         }
+
+         .card:hover {
+             box-shadow: 0rem 0.2rem 0.6rem 0rem rgba(0,0,0,0.2);
+         }
+
+         .card.secondary {
+             margin: 1rem;
+             padding: 1rem 2rem;
+             margin-bottom: 0;
+             color: #444;
+             background: #f0f0f0;
+             font-size: 0.8em;
+         }
+
+         .card.cardlike {
+             margin: 1rem;
+             padding: 1rem 2rem;
+             margin-bottom: 0;
+             color: #b4effe;
+             background: none;
+             box-shadow: none;
+         }
+         
+         .headline {
+             text-align: center;
+             background: #37abc8;
+             padding: 2rem 0;
+             color: #fff;
+         }
+
+         .head-logo {
+             width: 4em;
+             display: inline-block;
+         }
+
+         .mainhead {
+             font-size: 3em;
+         }
+         .subhead {
+             font-size: 2em;
+             color: #27788c;
+             font-family: "BigNoodleTitling", Impact, sans-serif;
+             font-weight: normal;
+         }
+
+         #scratchlogo {
+             width: 10em;
+             display: inline-block;
+         }
+
+         .row {
+             text-align: center;
+         }
+         @media (min-width: 480px){
+             .row { width: 100%; display: table; table-layout: fixed; text-align: inherit; }
+             .col { display: table-cell; vertical-align: top;}
+         }
+
+         .text-right {
+             text-align: right;
+         }
+
+         .text-center {
+             text-align: center;
+         }
+         
+         .clicktext {
+             font-size: 1.2em;
+         }
+
+         .smaller {
+             font-size: 0.6em;
+         }
+        </style>
+
+        <script type="text/javascript">
+         function showHideChallenges() {
+             var x = document.getElementById("contentHide");
+             var y = document.getElementById("contentShow");
+             if (x.style.display === "none") {
+                 x.style.display = "block";
+                 y.style.display = "none";
+             } else {
+                 x.style.display = "none";
+                 y.style.display = "block";
+             }
+         }
+
+         function go_advanced(){
+	     if (confirm("Advanced settings page needs separate login. \n\nIt is for experts and no support will be provided. \n\nUsing improper settings will brick your hub.")==true) return true;
+	     else return false;
+         }
+        </script>
+    </head>
+    <body>
+        <div class="headline">
+            <div class="container">
+                <a href="https://robotical.io" target=_blank><img src="./res/robotical_logo.svg" class="head-logo"></a>
+                <br>
+                <h1 class="mainhead">Marty the Robot</h1>
+                <h2 class="subhead">&nbsp;Command Hub&plus;</h2>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <a href="/scratchx/index.html?url=scratch_extensions/martyExtended.js#scratch" style="text-decoration: none !important;">
+                <div class="card">
+                    <div class="row">
+                        <div class="col" style="width: 11em;">
+                            <img src="./res/scratchlogo.png" id="scratchlogo">
+                        </div>
+                        <div class="col" style="text-align: right; padding-top: 1em; color: #222;">
+                            <span class="clicktext">Click here to open ScratchX &nbsp; &longrightarrow;</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <div class="card secondary">
+                <a id="contentShow" onclick="showHideChallenges()" style="color: #aaa; display: block; padding: 1rem 0; text-align: center; text-decoration: none !important; cursor: pointer;">
+                    <div style="font-size: 3em; padding-bottom: 0.2em;">&plus;</div>
+                    Click to show Scratch Challenges&hellip;
+                </a>
+                <div id="contentHide" style="display: none;">
+                    
+                    <h1>Marty Scratch Challenges</h1>
+                    <p>
+                        <a href="/?url=scratch_extensions/martyBasic.js#scratch">Main Scratch Interface</a><br/ >
+                        <a href="/?url=scratch_extensions/martyExtended.js#scratch">Extended commands</a><br />
+                        <a href="/?url=scratch_extensions/martyWalk.js#scratch">Walk Challenge</a><br />
+                        <!--<a href="/?url=scratch_extensions/martyDemo.js#scratch">Scratch Demo</a><br />-->
+                    </p>
+
+                    <h2>Examples Sheet</h2>
+                    <a href="ChallengeOutlines.pdf" target="_blank">Here</a> is a big document showing lots of things you can do with Scratch and Marty.
+
+                    <h2>Starter projects</h2>
+                    <h3>Basic Movements</h3>
+                    <a href="/?url=/scratch_extensions/basics-01.sbx#scratch">Making Marty move</a> <br/>
+                    <a href="/?url=/scratch_extensions/basics-02.sbx#scratch">Try out loops!</a><br />
+                    <a href="/?url=/scratch_extensions/basics-03.sbx#scratch">Make a function</a>
+
+                    <h3>Walk Challenge</h3>
+                    <p>
+                        We challenge you to make Marty walk, but you're not allowed to just use the walk command!<br />
+                        You'll need to think about balance and how Marty moves, and you'll actually teach a robot to walk!</p>
+                    <p><a href="/?url=/scratch_extensions/walkChallenge-01.sbx#scratch">Intro with instructions</a></p>
+                    Once you're through the basics, try the following!:
+                    <ul>
+                        <li>Try using the "Move <i>joint</i>..." block to make your own movement, and define it in a function</li>
+                        <li>Try making a step function that makes marty turn. See if you can get it to take an <i>argument</i> - in this case a number input - to vary the amount it turns</li>
+                        <li>If the turn amount is too large, Marty might get into trouble. How can you make sure that doesn't happen?</li>
+                    </ul>
+
+                    <h3>Reading Sensors</h3>
+                    <p>These two examples assume you have some bump switches connected - ideally a forward facing one on Input 0, and a ground contact (downward facing) one on Input 1<br />
+                        <a href="/?url=/scratch_extensions/sensors-01.sbx#scratch">Reading a bump switch and reacting</a><br />
+                        <a href="/?url=/scratch_extensions/sensors-01a.sbx#scratch">Detecting a ledge (and not walking off!)</a>
+                    </p>
+                    <a href="/?url=/scratch_extensions/sensors-02.sbx#scratch">Reading motor current</a>
+
+                    <h2>Complete examples</h2>
+                    <a href="/?url=/scratch_extensions/graphTest.sbx#scratch">Showing a graph of force on the arm</a><br />
+                    <a href="/?url=/scratch_extensions/handshake-basic.sbx#scratch">Simple Handshake</a><br />
+                    <a href="/?url=/scratch_extensions/handshake-full.sbx#scratch">Complex Handshake</a>
+
+                    <br><br>
+                </div>
+            </div>
+            
+            <div class="smaller">
+                <div class="card cardlike text-center">
+                    <a href="/html/index">
+                        <span class="clicktext">Command Hub&plus; Configuration</span>
+                    </a>
+                    <br>
+                    <a href="/cgi-bin/luci" onclick="return go_advanced()">
+                        <span class="clicktext">Advanced Configuration</span>
+                    </a>
+                </div>
+            </div>
+
+            
+            <br>
+            <br>
+                
+        </div>
+    </body>
+</html>
