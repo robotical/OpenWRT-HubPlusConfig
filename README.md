@@ -24,9 +24,10 @@ Software Setup
    * The page now shows the command hub homepage
    * The link to ScratchX works and loads the extension properly
 8. Now run `./install-wifi.sh`. This will overwrite the router's wifi config, asking for a `Y` confirmation beore committing.
-9. The root password and new SSIDs, WiFi passwords are set.
-10. Reboot the router and check that http://192.168.8.1 comes back up, that the SSIDs are now `martyHubPlus-5G` and `martyHubPlus-2G` adn the WiFi password `martyrocks` works.
-11. Fin!
+9. The new SSIDs and WiFi passwords are set.
+10. Set a root password, this can be done like so: `passwd root -d "martyrocks"`. Alternately, do this through the config web interface, or leave it to the customer!
+11. Reboot the router and check that http://192.168.8.1 comes back up, that the SSIDs are now `martyHubPlus-5G` and `martyHubPlus-2G` adn the WiFi password `martyrocks` works. 
+13. Fin!
 
 
 Stuff
