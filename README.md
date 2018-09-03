@@ -5,10 +5,11 @@ Hardware Setup
 ---
 
 1. You need a SD card, with a single, linux compatible partition like FAT or better, EXT4.
-2. Clone/copy the whole contents of this repo onto it, so that the `scratchx` and `www` folders are in its top level directory.
-3. Remove the SD card from your computer and add it to the Router
-4. Turn the router on -- it'll take a couple of minutes to fully boot.
-5. Whilst its booting, put a Robotical roundel sticker on it!
+2. Shallow Clone/copy the whole contents of this repo onto it, so that the ``www` folder is in its top level directory.
+3. Get a copy of `scratchx` from here https://github.com/robotical/scratchx (also shallow cloned `git clone --depth=1`)
+4. Remove the SD card from your computer and insert it into the Router
+5. Turn the router on -- it'll take a couple of minutes to fully boot.
+6. Whilst its booting, put a Robotical sticker on it!
 
 
 Software Setup
@@ -18,16 +19,16 @@ Software Setup
 2. Go to http://192.168.8.1 (the router's homepage)
 3. You should see the iNet GL first time setup thingy, asking you to choose a language. No need to do anything there.
 4. ssh into the router: `ssh root@192.168.8.1` (There should be no root password)
-5. Go to the SD card, which is mounted at `/mnt/sda/`
-6. Run the web install script: `./install-web.sh`
-7. This should complete without any intervention needed. Go back to http://192.168.8.1 and check that
+5. Set a root password, this can be done like so: `passwd root -d "martyrocks"`.
+6. Go to the SD card, which is mounted at `/mnt/sda1`
+7. Run the web install script: `./install-web.sh`
+8. This should complete without any intervention needed. Go back to http://192.168.8.1 and check that
    * The page now shows the command hub homepage
    * The link to ScratchX works and loads the extension properly
-8. Now run `./install-wifi.sh`. This will overwrite the router's wifi config, asking for a `Y` confirmation beore committing.
-9. The new SSIDs and WiFi passwords are set.
-10. Set a root password, this can be done like so: `passwd root -d "martyrocks"`. Alternately, do this through the config web interface, or leave it to the customer!
+9. Now run `./install-wifi.sh`. This will overwrite the router's wifi config, asking for a `Y` confirmation beore committing.
+10. The new SSIDs and WiFi passwords are set.
 11. Reboot the router and check that http://192.168.8.1 comes back up, that the SSIDs are now `martyHubPlus-5G` and `martyHubPlus-2G` adn the WiFi password `martyrocks` works. 
-13. Fin!
+12. Fin!
 
 
 Stuff
