@@ -21,12 +21,13 @@ Hardware Setup
 Software Setup
 ---
 
-1. Connect a computer using an ethernet cable.
+1. Preferably Connect a computer using an ethernet cable, or connect to its WiFi network, `GL-AR750-___ network` password `goodlife`
 2. Go to http://192.168.8.1 (the router's homepage)
 3. You should see the iNet GL first time setup thingy, asking you to choose a language. No need to do anything there.
-4. ssh into the router: `ssh root@192.168.8.1` (There should be no root password)
+4. ssh into the router: `ssh -o StrictHostKeyChecking=no root@192.168.8.1` (There should be no root password).
+In Windows, you can use PuTTY to ssh.
 5. Set a root password, this can be done like so: `passwd root -d "martyrocks"`.
-6. Go to the SD card, which is mounted at `/mnt/sda1`
+6. `cd` to the SD card, which is mounted at `/mnt/sda1`
 7. Run the web install script: `./install-web.sh`
 8. This should complete without any intervention needed. Go back to http://192.168.8.1 and check that
    * The page now shows the command hub homepage
