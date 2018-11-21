@@ -4,18 +4,23 @@ GL750M Install & Configure
 Hardware Setup
 ---
 
-1. You need a SD card, with a single, linux compatible partition like FAT or better, EXT4.
+1. You need a SD card, with a single, Linux compatible partition on it like FAT or better, EXT4.
 2. Shallow Clone/copy the whole contents of this repo onto it, so that the ``www` folder is in its top level directory, like so:
 
         git clone git@github.com:robotical/OpenWRT-HubPlusConfig.git ./ --depth=1
 
-3. Get a copy of `scratchx` from here https://github.com/robotical/scratchx (also shallow cloned `git clone --depth=1`)
+3. Load the other files using the following command:
+
+        git submodule init
+        git submodule update
+
+4. Get a copy of `scratchx` from here https://github.com/robotical/scratchx (also shallow cloned `git clone --depth=1`)
 
         git clone git@github.com:robotical/scratchx.git --depth=1
 
-4. Remove the SD card from your computer and insert it into the Router
-5. Turn the router on -- it'll take a couple of minutes to fully boot.
-6. Whilst its booting, put a Robotical sticker on it!
+5. Remove the SD card from your computer and insert it into the Router
+6. Turn the router on -- it'll take a couple of minutes to fully boot.
+7. Whilst its booting, put a Robotical sticker on it!
 
 
 Software Setup

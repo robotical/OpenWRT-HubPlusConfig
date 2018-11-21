@@ -1,0 +1,3 @@
+[submodule "www/scratch3-gui"]
+	path = www/scratch3-gui
+	url = git@github.com:robotical/scratch3-gui.git
