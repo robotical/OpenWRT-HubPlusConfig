@@ -78,9 +78,8 @@ Updating your Command Hub
 
 You can check what version of Hub software you're running by running `. /mnt/sda1/VERSION` on the hub.
 
-1. Remove the SD card from the Router and plug it in to a network connected computer, or connect
-   the Router to the internet and then SSH in to it.
-2. If on the hub, type `cd /mnt/sda1/`, if on another computer, change to the SD card top-level directory. 
+1. Remove the SD card from the Hub and plug it in to an internet-connected computer
+2. Change to the SD card top-level directory. 
 3. Run the following command to fetch latest files:
 
         git pull origin master --recurse-submodules
