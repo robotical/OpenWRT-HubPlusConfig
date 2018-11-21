@@ -25,7 +25,7 @@ uci set wireless.default_radio1.encryption="psk-mixed"
 uci set wireless.default_radio1.ssid="martyHubPlus-2G"
 uci set wireless.default_radio1.key="martyrocks"
 
-
+uci set network.lan.ipaddr="192.168.8.1"
 
 echo ""
 echo "========================================================"

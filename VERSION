@@ -1,0 +1,3 @@
+#!/bin/bash
+export HUB_VERSION='1.1.0'
+echo $HUB_VERSION

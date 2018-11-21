@@ -38,6 +38,12 @@ if [ ! -d /www/scratchx ]; then
 else
     echo "D       (/www/scratchx/ already exists)"
 fi
+if [ ! -d /www/scratch3 ]; then
+    ln -s /mnt/sda1/scratch3-gui /www/scratch3
+    echo "+       Adding /www/scratch3/..."
+else
+    echo "D       (/www/scratch3/ already exists)"
+fi
 
 # Change index format to match index.html
 if [ ! -f /etc/lighttpd/lighttpd.conf ]; then
