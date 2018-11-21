@@ -11,15 +11,10 @@ Hardware Setup
 
         git clone git@github.com:robotical/OpenWRT-HubPlusConfig.git ./ --depth=1 --recurse-submodules
 
-4. Get a copy of `scratchx` from here https://github.com/robotical/scratchx (also shallow
-   cloned `git clone --depth=1`)
-
-        git clone git@github.com:robotical/scratchx.git --depth=1
-
-5. Unmount then Remove the SD card from your computer and insert it into the Router.
-6. Turn the router on -- it'll take a couple of minutes to fully boot. You can tell when it has booted
-   by whether all three front LEDs are lit.
-7. Whilst it is booting, put a Robotical sticker on it!
+4. Unmount then Remove the SD card from your computer and insert it into the Router.
+5. Turn the router on -- it'll take a couple of minutes to fully boot. You can tell it has booted
+   when all three front LEDs are lit.
+6. Whilst it is booting, put a Robotical sticker on it!
 
 
 Software Setup
