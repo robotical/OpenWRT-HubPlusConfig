@@ -32,12 +32,21 @@ if [ ! -d /www/res ]; then
 else
     echo "D       (/www/res/ already exists)"
 fi
+
+if [ ! -d /www/tools ]; then
+    ln -s /mnt/sda1/www/tools /www/tools
+    echo "+       Adding /www/tools/..."
+else
+    echo "D       (/www/tools/ already exists)"
+fi
+
 if [ ! -d /www/scratchx ]; then
     ln -s /mnt/sda1/scratchx /www/scratchx
     echo "+       Adding /www/scratchx/..."
 else
     echo "D       (/www/scratchx/ already exists)"
 fi
+
 if [ ! -d /www/scratch3 ]; then
     ln -s /mnt/sda1/scratch3-gui /www/scratch3
     echo "+       Adding /www/scratch3/..."
