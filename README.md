@@ -6,7 +6,7 @@ Hardware Setup
 
 1. You need a SD card, with a single, Linux compatible partition on it like FAT or better, EXT4.
 2. Open a terminal and change directory to the SD card.
-3. Shallow Clone/copy the whole contents of this repo onto it, so that the ``www` folder is in its
+3. Shallow Clone/copy the whole contents of this repo onto it, so that the `www` folder is in its
    top level directory, like so:
 
         git clone git@github.com:robotical/OpenWRT-HubPlusConfig.git ./ --depth=1 --recurse-submodules
@@ -79,7 +79,8 @@ You can check what version of Hub software you're running by running `. /mnt/sda
 
         git pull origin master --recurse-submodules
 
-    This will fetch the latest version of [this repository](https://github.com/robotical/OpenWRT-HubPlusConfig))
+    This will fetch the latest version of
+    [this repository](https://github.com/robotical/OpenWRT-HubPlusConfig)
     and the linked Submodules (currently Scratch)
 4. If on a computer, eject the card, add it back to the hub and reboot, SSH in to it, `cd /mnt/sda`
 4. Run the update script: `./update.sh`
@@ -88,7 +89,12 @@ You can check what version of Hub software you're running by running `. /mnt/sda
 Stuff
 ---
 
-Default (factory) UCI Wireless Conf
+#### Resetting a Hub
+
+Default (factory) UCI Wireless Conf.
+
+You can factory reset the hub by holding the reset button down (looks like a circular arrow)
+for 15 seconds, until it starts flashing quickly, then releasing.
 
 ```
 wireless.radio0=wifi-device
