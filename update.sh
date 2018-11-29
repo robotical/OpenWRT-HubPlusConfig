@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 . ./VERSION
 echo "Nothing to see here... yet!"
 echo "See the README.md for how to fetch an update first..."
