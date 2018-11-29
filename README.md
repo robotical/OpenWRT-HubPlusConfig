@@ -86,6 +86,36 @@ You can check what version of Hub software you're running by running `. /mnt/sda
 4. Run the update script: `./update.sh`
 
 
+Making a Release
+----------------
+
+This is very similar to just cloning the repo, but with extra steps!
+
+1. Test that the hub works with this exact set of files! Do a full reset and install.
+2. Change `./VERSION` and increment the version number within. Take not of what the number is...
+3. Do what you can re. making updates painless, see `update.sh`
+4. Now make a new git tag with *just* the version number (1.1.0 shown as an example):
+
+        git tag 1.1.0
+
+5. Push this tag to `origin`
+
+        git push origin --tags
+
+6. This will add the tag on GitHub. Go find the tag, and open up the tag editor so we can turn
+   it in to a GithUb release. Sadly the auto-generated source zips *won't* include the Git Submodules
+   so a few steps are needed to make a working downloadable zip.
+7. To do this, make a fresh clone of the repo in to an empty folder using the below command:
+
+        git clone --branch 1.1.0 git@github.com:robotical/OpenWRT-HubPlusConfig.git ./ --depth=1 --recurse-submodules
+        #                  ^^^ REPLACE WITH YOUR VERSION TAG
+
+8. Now just zip up this folder, and upload that zip as a release binary on the tag edit page
+   on GitHub from earlier
+
+
+
+
 Stuff
 ---
 
