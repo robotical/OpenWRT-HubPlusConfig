@@ -17,13 +17,14 @@ fi
 echo ""
 echo "I   Deleting all .git files found...."
 
-find ./ -name '.git*' -delete
+find ./ -name '.git*' -exec rm -rvf {} +
 
 echo ""
 FNAME="OpenWRT-HubPlusConfig-$HUB_VERSION"
 echo "I   Making Zip at ../$FNAME.zip"
 
-zip ../$FNAME.zip ./
+zip -r ../$FNAME.zip ./
 
 echo ""
 echo "I   Done, exiting."
+echo "I   You'll find the Zip at ../$FNAME.zip"
