@@ -116,7 +116,7 @@ This is very similar to just cloning the repo, but with extra steps!
 8. Run the `./makerelease.sh` bash script from the root directory of the project, which will first
    clear up the `.git*` files and then make a zip archive using the `VERSION` script one directory up.
 
-8. Now just upload the created zip as a release binary on the tag edit page
+9. Now just upload the created zip as a release binary on the tag edit page
    on GitHub from earlier
 
 
