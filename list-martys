@@ -1,0 +1,3 @@
+#!/bin/sh
+
+(iwinfo wlan1 assoclist && echo "DHCP LEASES" && cat /tmp/dhcp.leases) | awk -f /scripts/parseMartys.awk

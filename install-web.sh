@@ -54,6 +54,19 @@ else
     echo "D       (/www/scratch3/ already exists)"
 fi
 
+if [ ! -d /scripts ]; then
+    mkdir /scripts
+    echo "I   Creating /scripts"
+else
+    echo "D   (/scripts already exists!)"
+fi
+
+cp /mnt/sda1/parseMartys.awk /scripts/parseMartys.awk
+cp /mnt/sda1/list-martys /www/cgi-bin/list-martys
+chmod +x /www/cgi-bin/list-martys
+chmod +x /scripts/parseMartys.awk
+echo "I   Adding Marty list script to /www/cgi-bin/list-martys"
+
 # Change index format to match index.html
 if [ ! -f /etc/lighttpd/lighttpd.conf ]; then
     echo "I   Backing up exisiting lighttpd config..."
