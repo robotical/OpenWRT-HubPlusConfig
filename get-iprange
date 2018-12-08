@@ -1,0 +1,10 @@
+#!/bin/sh
+
+BASEIP=$(uci show network.lan.ipaddr | sed 's/network.lan.ipaddr=//g' | sed "s/'//g")
+
+echo "Content-Type: application/json"
+echo "Cache-control: private, max-age=0, no-cache"
+echo "Access-Control-Allow-Origin: *"
+echo ""
+echo "{\"ip\":\"$BASEIP\"}"
+

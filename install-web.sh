@@ -56,15 +56,16 @@ fi
 
 if [ ! -d /scripts ]; then
     mkdir /scripts
-    echo "I   Creating /scripts"
+    echo "+   Creating /scripts"
 else
     echo "D   (/scripts already exists!)"
 fi
 
+echo "I       Copying list marty scripts to /scripts and /www/cgi-bin"
 cp /mnt/sda1/parseMartys.awk /scripts/parseMartys.awk
 cp /mnt/sda1/list-martys /www/cgi-bin/list-martys
-chmod +x /www/cgi-bin/list-martys
-chmod +x /scripts/parseMartys.awk
+cp /mnt/sda1/get-iprange /www/cgi-bin/get-iprange
+
 echo "I   Adding Marty list script to /www/cgi-bin/list-martys"
 
 # Change index format to match index.html
