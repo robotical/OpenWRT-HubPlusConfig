@@ -96,7 +96,7 @@ function scanForMartys(ip, timeout){
             console.log("gonna scan: " + ip);
         } else {
             document.getElementById("ipWarning").style.display = "inline";
-            ip = "192.168.0";
+            ip = "192.168.8";
         }
     }
     if (timeout === undefined){timeout = 20000;}
@@ -120,10 +120,10 @@ function checkResults(ip){
         $('#MartyList').empty();
         listMartys(ip, true);
         if (!martylist.length){
-            if (localIP != null && ip != "192.168.0" && ip != "192.168.1"){
+            if (localIP != null && ip != "192.168.0" && ip != "192.168.8"){
                 scanForMartys("192.168.0");
             } else if (ip == "192.168.0"){
-                scanForMartys("192.168.1");
+                scanForMartys("192.168.8");
             }
         }
     }
