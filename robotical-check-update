@@ -1,0 +1,20 @@
+#!/bin/sh /etc/rc.common
+
+# This is an init.d service to check
+#  for updates at boot time.
+
+SERVICE_USE_PID=1
+
+START=50
+
+start() {
+    if [ -d /mnt/sda1 ];
+    then
+        /mnt/sda1/update.sh
+        echo "checked for update on init $(date)" >> /mnt/sda1/log.txt
+    fi
+}
+
+stop() {
+    echo "crickets..."
+}

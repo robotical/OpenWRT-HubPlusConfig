@@ -4,7 +4,7 @@
 echo "Current Version:"
 . /mnt/sda1/VERSION
 
-if [ ! -f /mnt/sda1/hub-update.zip ]
+if [ ! -f /mnt/sda1/hub-update.zip ];
 then
     echo "X       No Update archive found!"
     exit 1
@@ -32,7 +32,7 @@ echo "I       Checking if update required..."
 
 OLD_VER=$HUB_VERSION
 
-if [ ! -f /mnt/sda1/update-files/VERSION ]
+if [ ! -f /mnt/sda1/update-files/VERSION ];
 then
     echo "X       No version number given for update, exiting..."
     rm -rf /mnt/sda1/update-files
@@ -44,7 +44,7 @@ fi
 # Source the update's VERSION number to check version difference
 . /mnt/sda1/update-files/VERSION
 
-if [ $HUB_VERSION == $OLD_VER ]
+if [ $HUB_VERSION == $OLD_VER ];
 then
     echo "I       Update is same as current version $OLD_VER"
     echo "X       Exiting...."
@@ -61,7 +61,7 @@ echo ""
 
 read -p "!   Press y to Confirm and Make Update, n to Cancel: " -n 1 -r
 echo ""
-if [ ! $REPLY == "y" ]
+if [ ! $REPLY == "y" ];
 then
     echo "X       Aborted, exiting..."
     rm -rf /mnt/sda1/update-files
