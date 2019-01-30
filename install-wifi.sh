@@ -44,7 +44,7 @@ if [ ! $REPLY == "Y" ]
 then
     uci revert wireless
     echo "I   Aborted, exiting..."
-    exit
+    exit 1
 fi
 
 # save changes

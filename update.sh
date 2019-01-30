@@ -1,5 +1,95 @@
 #!/usr/bin/env sh
-. ./VERSION
-echo "Nothing to see here... yet!"
-echo "See the README.md for how to fetch an update first..."
-echo "This script is for applying the update."
+## Update script for Robotical Command Hub+
+
+echo "Current Version:"
+. /mnt/sda1/VERSION
+
+if [ ! -f /mnt/sda1/hub-update ]
+then
+    echo "X       No Update archive found!"
+    exit 1
+fi
+
+echo "I       Found an update file"
+
+echo "I       Unpacking..."
+
+# Check and create dir
+if [ ! -d /mnt/sda1/update-files ]
+then
+    mkdir /mnt/sda1/update-files
+    cd /mnt/sda1/update-files
+else
+    cd /mnt/sda1/update-files
+    rm -rf /mnt/sda1/update-files/*
+fi
+
+# Unpack
+tar xf /mnt/sda1/hub-update
+
+echo "I       Checking if update required..."
+
+OLD_VER=$HUB_VERSION
+
+if [ ! -f /mnt/sda1/update-files/VERSION ]
+then
+    echo "X       No version number given for update, exiting..."
+    rm -rf /mnt/sda1/update-files
+    exit 2
+fi
+
+# Else, continue
+
+# Source the update's VERSION number to check version difference
+. /mnt/sda1/update-files/VERSION
+
+if [ $HUB_VERSION == $OLD_VER ]
+then
+    echo "I       Update is same as current version $OLD_VER"
+    echo "X       Exiting...."
+    exit 3
+fi
+
+echo ""
+echo "--------------------------------------------------------"
+echo ""
+
+echo "I       Currently running Hub version $OLD_VER"
+echo "I       New software is version $HUB_VERSION"
+echo ""
+
+read -p "!   Press y to Confirm and Make Update, n to Cancel: " -n 1 -r
+echo ""
+if [ ! $REPLY == "y" ]
+then
+    echo "X       Aborted, exiting..."
+    rm -rf /mnt/sda1/update-files
+    exit 4
+fi
+
+# Else, make update
+
+cd /mnt/sda1
+
+echo "I       Copying files..."
+mv /mnt/sda1/update-files/* /mnt/sda1/
+
+echo ""
+echo "========================================================"
+echo "--------------------------------------------------------"
+echo ""
+echo ""
+
+# Perform the update:
+./install.sh
+
+echo ""
+echo ""
+echo "--------------------------------------------------------"
+echo "========================================================"
+echo ""
+
+echo "I       Cleaning up..."
+rm -rf /mnt/sda1/update-files
+
+echo "Done!"
