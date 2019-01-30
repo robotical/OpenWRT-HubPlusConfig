@@ -4,7 +4,7 @@
 echo "Current Version:"
 . /mnt/sda1/VERSION
 
-if [ ! -f /mnt/sda1/hub-update ]
+if [ ! -f /mnt/sda1/hub-update.zip ]
 then
     echo "X       No Update archive found!"
     exit 1
@@ -25,7 +25,8 @@ else
 fi
 
 # Unpack
-tar xf /mnt/sda1/hub-update
+#tar xf /mnt/sda1/hub-update
+unzip /mnt/sda1/hub-update.zip
 
 echo "I       Checking if update required..."
 
