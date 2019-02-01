@@ -10,6 +10,19 @@ then
     exit 1
 fi
 
+# Verify signature
+usign -V -m /mnt/sda1/hub-update.zip -p /mnt/sda1/signing.pubkey
+
+if [ $? != 0 ];
+then
+    echo "X       =============================="
+    echo "X       Signature verification Failed!"
+    echo "X       ------------------------------"
+    echo "X"
+    echo "X       Exiting...."
+    exit 1
+fi
+
 echo "I       Found an update file"
 
 echo "I       Unpacking..."
