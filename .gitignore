@@ -1,5 +1,4 @@
-*private.asc
-*private.gpg
+*.secret
 scratchx/
 scratch3-gui/
 hub-update.zip
