@@ -120,6 +120,31 @@ This is very similar to just cloning the repo, but with extra steps!
    on GitHub from earlier
 
 
+Signing the Release!
+--------------------
+
+***Note to the Causal Reader:** There's a private key that we have that for obvious
+reasons won't be shared... You can make your own by typing the following into a terminal
+on the Hub* `usign -G -p ./signing.pubkey -s ./signing.secret`. *Obviously, don't share it.*
+
+
+With the zip file loaded onto a Hub, rename it to `hub-update.zip`:
+
+```
+$ mv OpenWRT-HubPlusConfig-v0.0.0.zip hub-update.zip
+#                          ^^^ Replace with correct here
+```
+
+Then create a signature (this will take approx. 10 seconds) and then verify that it
+works good (another 10 or so):
+
+```
+$ usign -S -m ./hub-update.zip -s ./signing.secret
+$ usign -V -m ./hub-update.zip -p ./signing.pubkey
+```
+
+This will make a new file called `hub-update.zip.sig` which is the signature you need!
+Remember, you'll need to re-sign if you make *any* change to the zip.
 
 
 Stuff

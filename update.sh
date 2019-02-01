@@ -11,8 +11,9 @@ then
 fi
 
 # Verify signature
-usign -V -m /mnt/sda1/hub-update.zip -p /mnt/sda1/signing.pubkey
+usign -V -q -m /mnt/sda1/hub-update.zip -p /mnt/sda1/signing.pubkey
 
+# Check return code:
 if [ $? != 0 ];
 then
     echo "X       =============================="
