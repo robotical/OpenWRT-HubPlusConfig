@@ -17,7 +17,7 @@ fi
 cd /www
 
 # Check for existing files
-if [ -f ./index.html ] && [ ! -f ./index.html.bkup ]; then
+if [ -e ./index.html ] && [ ! -f ./index.html.bkup ]; then
     echo "I   Moving exisiting index.html to index.html.bkup..."
     mv index.html index.html.bkup
 fi
@@ -25,18 +25,42 @@ fi
 # add symbolic links to new web directory
 echo "I   Adding symlinks in /www to /mnt/sda1/$HUB_VERSION..."
 
-ln -s /mnt/sda1/$HUB_VERSION/www/index.html ./index.html
+if [ -e /www/index.html ];
+then
+    rm /www/index.html
+fi
+ln -s /mnt/sda1/$HUB_VERSION/www/index.html /www/index.html
 echo "+       Adding /www/index.html..."
 
+
+if [ -e /www/res ];
+then
+    rm /www/res
+fi
 ln -s /mnt/sda1/$HUB_VERSION/www/res /www/res
 echo "+       Adding /www/res/..."
 
+
+if [ -e /www/tools ];
+then
+    rm /www/tools
+fi
 ln -s /mnt/sda1/$HUB_VERSION/www/tools /www/tools
 echo "+       Adding /www/tools/..."
 
+
+if [ -e /www/scratchx ];
+then
+    rm /www/scratchx
+fi
 ln -s /mnt/sda1/$HUB_VERSION/scratchx /www/scratchx
 echo "+       Adding /www/scratchx/..."
 
+
+if [ -e /www/scratch3 ];
+then
+    rm /www/scratch3
+fi
 ln -s /mnt/sda1/$HUB_VERSION/scratch3-gui /www/scratch3
 echo "+       Adding /www/scratch3/..."
 

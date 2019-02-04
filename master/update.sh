@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 ## Update script for Robotical Command Hub+
 
-echo "I       Current Version:"
 . /mnt/sda1/VERSION
+echo "I       Current Version: $HUB_VERSION"
 
 if [ ! -f /mnt/sda1/hub-update.zip ];
 then
@@ -44,9 +44,16 @@ unzip /mnt/sda1/hub-update.zip
 echo "I       Checking if update required..."
 
 OLD_VER=$HUB_VERSION
-DIRS=$(*/)
+DIR=$(find . -type d -maxdepth 1 ! -name . | sed "s/\.\///g") # <<----- TODO bit fragile
 
-if [ ! -f /mnt/sda1/.update-files/${DIRS[0]}/VERSION ]; # <<----- TODO bit fragile
+if [ ! -d ./$DIR ];
+then
+    echo "X       Can't work out what dir"
+    rm -rf /mnt/sda1/.update-files
+    exit 2
+fi
+
+if [ ! -f /mnt/sda1/.update-files/$DIR/VERSION ];
 then
     echo "X       No version number given for update, exiting..."
     rm -rf /mnt/sda1/.update-files
@@ -56,7 +63,7 @@ fi
 # Else, continue
 
 # Source the update's VERSION number to check for version difference
-. /mnt/sda1/.update-files/${DIRS[0]}/VERSION
+. /mnt/sda1/.update-files/$DIR/VERSION
 
 if [[ $HUB_VERSION == $OLD_VER && $HUB_VERSION != 'master' ]];
 then
@@ -106,5 +113,9 @@ echo ""
 
 echo "I       Cleaning up..."
 rm -rf /mnt/sda1/.update-files
+
+# Remove update files:
+#rm /mnt/sda1/hub-update.zip
+#rm /mnt/sda1/hub-update.zip.sig
 
 echo "Done!"

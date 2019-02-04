@@ -10,7 +10,7 @@ START=50
 start() {
     if [[ -d /mnt/sda1 && -f /mnt/sda1/update.sh ]];
     then
-        /mnt/sda1/update.sh
+        yes | /mnt/sda1/update.sh
         #echo "checked for update on init $(date)" >> /mnt/sda1/log.txt
     fi
 }
