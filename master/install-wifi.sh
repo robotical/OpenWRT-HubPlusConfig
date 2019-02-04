@@ -2,6 +2,7 @@
 ## Install script for Robotical Command Hub+
 
 . ./VERSION
+. ./CONFIG
 
 echo ""
 echo "========================================================"
@@ -19,15 +20,15 @@ echo "I   Configuring WiFi..."
 uci set wireless.radio0.band="5G"
 uci set wireless.default_radio0.mode="ap"
 uci set wireless.default_radio0.encryption="psk-mixed"
-uci set wireless.default_radio0.ssid="RoboticalHubPlus-5G"
-uci set wireless.default_radio0.key="martyrocks"
+uci set wireless.default_radio0.ssid=$HUB_SSID_5
+uci set wireless.default_radio0.key=$HUB_WPA_5
 
 uci set wireless.default_radio1.mode="ap"
 uci set wireless.default_radio1.encryption="psk-mixed"
-uci set wireless.default_radio1.ssid="RoboticalHubPlus-2G"
-uci set wireless.default_radio1.key="martyrocks"
+uci set wireless.default_radio1.ssid=$HUB_SSID_24
+uci set wireless.default_radio1.key=$HUB_WPA_24
 
-uci set network.lan.ipaddr="192.168.8.1"
+uci set network.lan.ipaddr=$HUB_LAN_IPADDR
 
 echo ""
 echo "========================================================"

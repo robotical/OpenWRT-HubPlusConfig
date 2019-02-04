@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+export HUB_SSID_5="RoboticalHubPlus-5G"
+export HUB_WPA_5="martyrocks"
+
+export HUB_SSID_24="RoboticalHubPlus-2G"
+export HUB_WPA_24="martyrocks"
+
+export HUB_LAN_IPADDR="192.168.8.1"
+
