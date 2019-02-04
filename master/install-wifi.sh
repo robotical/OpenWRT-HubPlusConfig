@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 ## Install script for Robotical Command Hub+
 
+. ./VERSION
+
 echo ""
 echo "========================================================"
 echo ""
@@ -30,7 +32,7 @@ uci set network.lan.ipaddr="192.168.8.1"
 echo ""
 echo "========================================================"
 echo ""
-echo "I   Config Changes:"
+echo "I   Config Changes:  (Hub $HUB_VERSION)"
 echo ""
 uci changes
 

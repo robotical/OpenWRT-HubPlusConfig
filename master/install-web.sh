@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 ## Install script for Robotical Command Hub+
 
+. ./VERSION
+
 # Stop webserver
 echo "I   Stopping Service Lighttpd..."
 /etc/init.d/lighttpd stop
@@ -15,44 +17,28 @@ fi
 cd /www
 
 # Check for existing files
-if [ -f ./index.html ]; then
+if [ -f ./index.html ] && [ ! -f ./index.html.bkup ]; then
     echo "I   Moving exisiting index.html to index.html.bkup..."
     mv index.html index.html.bkup
 fi
 
 # add symbolic links to new web directory
-echo "I   Adding symlinks in /www to /mnt/sda1..."
+echo "I   Adding symlinks in /www to /mnt/sda1/$HUB_VERSION..."
 
-ln -s /mnt/sda1/www/index.html ./index.html
+ln -s /mnt/sda1/$HUB_VERSION/www/index.html ./index.html
 echo "+       Adding /www/index.html..."
 
-if [ ! -d /www/res ]; then
-    ln -s /mnt/sda1/www/res /www/res
-    echo "+       Adding /www/res/..."
-else
-    echo "D       (/www/res/ already exists)"
-fi
+ln -s /mnt/sda1/$HUB_VERSION/www/res /www/res
+echo "+       Adding /www/res/..."
 
-if [ ! -d /www/tools ]; then
-    ln -s /mnt/sda1/www/tools /www/tools
-    echo "+       Adding /www/tools/..."
-else
-    echo "D       (/www/tools/ already exists)"
-fi
+ln -s /mnt/sda1/$HUB_VERSION/www/tools /www/tools
+echo "+       Adding /www/tools/..."
 
-if [ ! -d /www/scratchx ]; then
-    ln -s /mnt/sda1/scratchx /www/scratchx
-    echo "+       Adding /www/scratchx/..."
-else
-    echo "D       (/www/scratchx/ already exists)"
-fi
+ln -s /mnt/sda1/$HUB_VERSION/scratchx /www/scratchx
+echo "+       Adding /www/scratchx/..."
 
-if [ ! -d /www/scratch3 ]; then
-    ln -s /mnt/sda1/scratch3-gui /www/scratch3
-    echo "+       Adding /www/scratch3/..."
-else
-    echo "D       (/www/scratch3/ already exists)"
-fi
+ln -s /mnt/sda1/$HUB_VERSION/scratch3-gui /www/scratch3
+echo "+       Adding /www/scratch3/..."
 
 if [ ! -d /scripts ]; then
     mkdir /scripts
@@ -62,14 +48,15 @@ else
 fi
 
 echo "I       Copying list marty scripts to /scripts and /www/cgi-bin"
-cp /mnt/sda1/parseMartys.awk /scripts/parseMartys.awk
-cp /mnt/sda1/list-martys /www/cgi-bin/list-martys
-cp /mnt/sda1/get-iprange /www/cgi-bin/get-iprange
+cp /mnt/sda1/$HUB_VERSION/parseMartys.awk /scripts/parseMartys.awk
+cp /mnt/sda1/$HUB_VERSION/list-martys /www/cgi-bin/list-martys
+cp /mnt/sda1/$HUB_VERSION/get-iprange /www/cgi-bin/get-iprange
 
 echo "I   Adding Marty list script to /www/cgi-bin/list-martys"
 
 # Change index format to match index.html
-if [ ! -f /etc/lighttpd/lighttpd.conf ]; then
+if [ -f /etc/lighttpd/lighttpd.conf ] && [ ! -f /etc/lighttpd/lighttpd.conf.backup ];
+then
     echo "I   Backing up exisiting lighttpd config..."
     cp /etc/lighttpd/lighttpd.conf /etc/lighttpd/lighttpd.conf.backup
 fi
