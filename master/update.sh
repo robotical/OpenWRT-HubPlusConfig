@@ -81,18 +81,7 @@ echo "I       Currently running Hub version $OLD_VER"
 echo "I       New software is version $HUB_VERSION"
 echo ""
 
-read -p "!   Press y to Confirm and Make Update, n to Cancel: " -n 1 -r
-echo ""
-if [ ! $REPLY == "y" ];
-then
-    echo "X       Aborted, exiting..."
-    rm -rf /mnt/sda1/.update-files
-    exit 4
-fi
-
-# Else, make update
-
-echo "I       Copying files..."
+echo "I       Moving files..."
 mv /mnt/sda1/.update-files/* /mnt/sda1
 
 echo ""
@@ -115,7 +104,7 @@ echo "I       Cleaning up..."
 rm -rf /mnt/sda1/.update-files
 
 # Remove update files:
-#rm /mnt/sda1/hub-update.zip
-#rm /mnt/sda1/hub-update.zip.sig
+rm /mnt/sda1/hub-update.zip
+rm /mnt/sda1/hub-update.zip.sig
 
 echo "Done!"
