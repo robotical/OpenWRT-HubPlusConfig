@@ -1,17 +1,17 @@
 #!/usr/bin/env sh
 ## Update script for Robotical Command Hub+
 
-echo "Current Version:"
+echo "I       Current Version:"
 . /mnt/sda1/VERSION
 
 if [ ! -f /mnt/sda1/hub-update.zip ];
 then
-    echo "X       No Update archive found!"
-    exit 1
+    echo "X       No Update archive found"
+    exit
 fi
 
 # Verify signature
-usign -V -q -m /mnt/sda1/hub-update.zip -p /mnt/sda1/signing.pubkey
+usign -V -q -m /mnt/sda1/hub-update.zip -p /mnt/sda1/.signing.pubkey
 
 # Check return code:
 if [ $? != 0 ];
@@ -28,7 +28,7 @@ echo "I       Found an update file"
 
 echo "I       Unpacking..."
 
-# Check and create dir
+# Check and create temp dir to unzip to
 if [ ! -d /mnt/sda1/.update-files ]
 then
     mkdir /mnt/sda1/.update-files
@@ -38,15 +38,15 @@ else
     rm -rf /mnt/sda1/.update-files/*
 fi
 
-# Unpack
-#tar xf /mnt/sda1/hub-update
+# Unzip
 unzip /mnt/sda1/hub-update.zip
 
 echo "I       Checking if update required..."
 
 OLD_VER=$HUB_VERSION
+DIRS=$(*/)
 
-if [ ! -f /mnt/sda1/.update-files/VERSION ];
+if [ ! -f /mnt/sda1/.update-files/${DIRS[0]}/VERSION ]; # <<----- TODO bit fragile
 then
     echo "X       No version number given for update, exiting..."
     rm -rf /mnt/sda1/.update-files
@@ -55,13 +55,14 @@ fi
 
 # Else, continue
 
-# Source the update's VERSION number to check version difference
-. /mnt/sda1/.update-files/VERSION
+# Source the update's VERSION number to check for version difference
+. /mnt/sda1/.update-files/${DIRS[0]}/VERSION
 
 if [[ $HUB_VERSION == $OLD_VER && $HUB_VERSION != 'master' ]];
 then
     echo "I       Update is same as current version $OLD_VER"
     echo "X       Exiting...."
+    rm -rf /mnt/sda1/.update-files
     exit 3
 fi
 
@@ -83,15 +84,9 @@ then
 fi
 
 # Else, make update
-if [ ! -d /mnt/sda1/$HUB_VERSION ];
-then
-    mkdir /mnt/sda1/$HUB_VERSION
-fi
-
-cd /mnt/sda1/$HUB_VERSION
 
 echo "I       Copying files..."
-mv /mnt/sda1/.update-files/* /mnt/sda1/$HUB_VERSION
+mv /mnt/sda1/.update-files/* /mnt/sda1
 
 echo ""
 echo "========================================================"
@@ -99,6 +94,7 @@ echo "--------------------------------------------------------"
 echo ""
 echo ""
 
+cd /mnt/sda1/$HUB_VERSION
 # Perform the update:
 ./install.sh
 

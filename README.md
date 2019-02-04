@@ -79,7 +79,6 @@ the SD card:
 
        /hub-update.zip
        /hub-update.zip.sig
-       # occasionally, not always:
        /update.sh
 
 Then simply pop it back in the Hub and turn it back on. It should install the update on boot.
@@ -128,7 +127,7 @@ This is very similar to just cloning the repo, but with extra steps!
 
    It will ask you to enter the version number and will then put together a release zip.
 
-8. Now go look at "Signing a Release" so you can put together a full release.
+8. Now go look at "Signing the Release" so you can put together a full release.
 
 
 Signing the Release!
@@ -136,12 +135,14 @@ Signing the Release!
 
 ***Note to the Causal Reader:** There's a private key that we have that for obvious
 reasons won't be shared... You can make your own by typing the following into a terminal
-on the Hub* `usign -G -p ./signing.pubkey -s ./signing.secret`. *Obviously, don't share it.*
+on the Hub* `usign -G -p ./.signing.pubkey -s ./.signing.secret`. *Obviously, don't share it.*
 
 
-With the zip file loaded onto a Hub, rename it to `hub-update.zip`:
+You have to do this bit from the command line on a hub, so as to have access to the `usign`
+utility. With the zip file copied onto the Hub, rename it to `hub-update.zip`:
 
 ```
+$ cd /mnt/sda1/
 $ mv OpenWRT-HubPlusConfig-0.0.0.zip hub-update.zip
 #                          ^^^ Replace with correct here
 ```
@@ -156,6 +157,8 @@ $ usign -V -m ./hub-update.zip -p ./.signing.pubkey
 
 This will make a new file called `hub-update.zip.sig` which is the signature you need!
 Remember, you'll need to re-sign if you make *any* change to the zip.
+
+It's easiest to then just turn the hub off and copy these over.
 
 
 Stuff

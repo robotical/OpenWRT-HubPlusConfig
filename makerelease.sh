@@ -49,10 +49,16 @@ touch ./release/$HUB_VERSION/VERSION
 echo '#!/usr/bin/env sh' > ./release/$HUB_VERSION/VERSION
 echo "export HUB_VERSION='$HUB_VERSION'" >> ./release/$HUB_VERSION/VERSION
 
-
 echo ""
 FNAME="OpenWRT-HubPlusConfig-$HUB_VERSION"
-echo "I   Making Zip at ../$FNAME.zip"
+
+if [ -f  $FNAME ];
+then
+    echo "!   Zip already exists, deleting!"
+    rm "$FNAME.zip"
+fi
+
+echo "I   Making Zip at ./$FNAME.zip"
 
 cd ./release
 zip -r ../$FNAME.zip ./$HUB_VERSION
