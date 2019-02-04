@@ -44,6 +44,12 @@ echo "I   Will Copy over files from ./master to ./release/$HUB_VERSION/"
 mkdir ./release/$HUB_VERSION
 cp -r ./master/* ./release/$HUB_VERSION
 
+# Overwrite VERSION file with this new version number
+touch ./release/$HUB_VERSION/VERSION
+echo '#!/usr/bin/env sh' > ./release/$HUB_VERSION/VERSION
+echo "export HUB_VERSION='$HUB_VERSION'" >> ./release/$HUB_VERSION/VERSION
+
+
 echo ""
 FNAME="OpenWRT-HubPlusConfig-$HUB_VERSION"
 echo "I   Making Zip at ../$FNAME.zip"

@@ -1,3 +1,4 @@
+release/
 *.secret
 log.txt
 scratchx/
