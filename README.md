@@ -1,6 +1,7 @@
 GL750M Install & Configure
 ===
 
+
 Hardware Setup for Development Code
 -----------------------------------
 
@@ -11,10 +12,26 @@ Hardware Setup for Development Code
 
         git clone git@github.com:robotical/OpenWRT-HubPlusConfig.git ./ --depth=1 --recurse-submodules
 
+4. You may optionally need a private signing key, which isn't in git. It goes in the top level as `.signing.secret`
+5. Unmount then Remove the SD card from your computer and insert it into the Router.
+6. Turn the router on -- it'll take a couple of minutes to fully boot. You can tell it has booted
+   when all three front LEDs are lit.
+7. Whilst it is booting, put a Robotical sticker on it!
+8. Go to **"Software Setup"**
+
+
+Hardware Setup for a  Release
+-----------------------------
+
+1. You need a SD card, with a single, Linux compatible partition on it like FAT or better, EXT4.
+2. Unzip the release ZIP onto the SD card, so that the top level directory of it has:
+    1. A single folder called by the release name e.g. `3.14.1`
+    2. The public signing key (hidden file) called `.signing.pubkey`
 4. Unmount then Remove the SD card from your computer and insert it into the Router.
 5. Turn the router on -- it'll take a couple of minutes to fully boot. You can tell it has booted
    when all three front LEDs are lit.
 6. Whilst it is booting, put a Robotical sticker on it!
+7. Go to **"Software Setup"**
 
 
 Software Setup
@@ -27,7 +44,7 @@ Software Setup
    to do anything there.
 4. ssh into the router: `ssh -o StrictHostKeyChecking=no root@192.168.8.1` (There should be no
    root password). In Windows, you can use PuTTY to ssh.
-5. **Set a root password**, this can be done like so: `passwd root -d "martyrocks"`.
+5. Once connected over SSH, **Set a root password**, this can be done like so: `passwd root -d "martyrocks"`.
 6. `cd` to the SD card, which is mounted at `/mnt/sda1`
 6. `cd` to main directory, which is at `/mnt/sda1/master` or `/mnt/sda1/<version>` for a release.
 7. Run the web install scripts: `./install.sh`.  This will overwrite the router's wifi config,

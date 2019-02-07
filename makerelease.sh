@@ -43,6 +43,7 @@ echo "I   Will Copy over files from ./master to ./release/$HUB_VERSION/"
 
 mkdir ./release/$HUB_VERSION
 cp -r ./master/* ./release/$HUB_VERSION
+cp ./.signing.pubkey ./release/.signing.pubkey
 
 # Overwrite VERSION file with this new version number
 touch ./release/$HUB_VERSION/VERSION
@@ -62,6 +63,7 @@ echo "I   Making Zip at ./$FNAME.zip"
 
 cd ./release
 zip -r ../$FNAME.zip ./$HUB_VERSION
+zip ../$FNAME.zip ./.signing.pubkey
 cd ..
 
 rm -rf ./release
