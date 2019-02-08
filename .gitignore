@@ -2,4 +2,5 @@ release/
 *.secret
 log.txt
 hub-update.zip
+hub-update.zip.sig
 *.zip
