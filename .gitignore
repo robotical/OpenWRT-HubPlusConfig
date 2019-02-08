@@ -1,7 +1,5 @@
 release/
 *.secret
 log.txt
-scratchx/
-scratch3-gui/
 hub-update.zip
 *.zip
