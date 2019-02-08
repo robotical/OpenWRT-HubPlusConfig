@@ -7,7 +7,7 @@ Hardware Setup for Development Code
 
 1. You need a SD card, with a single, Linux compatible partition on it like FAT or better, EXT4.
 2. Open a terminal and change directory to the SD card.
-3. Shallow Clone/copy the whole contents of this repo onto it, so that the `master` folder is in its
+3. Shallow Clone/copy the whole contents of this repo onto it, so that the `src` folder is in its
    top level directory, like so:
 
         git clone git@github.com:robotical/OpenWRT-HubPlusConfig.git ./ --depth=1 --recurse-submodules
@@ -46,7 +46,7 @@ Software Setup
    root password). In Windows, you can use PuTTY to ssh.
 5. Once connected over SSH, **Set a root password**, this can be done like so: `passwd root -d "martyrocks"`.
 6. `cd` to the SD card, which is mounted at `/mnt/sda1`
-6. `cd` to main directory, which is at `/mnt/sda1/master` or `/mnt/sda1/<version>` for a release.
+6. `cd` to main directory, which is at `/mnt/sda1/src` or `/mnt/sda1/<version>` for a release.
 7. Run the web install scripts: `./install.sh`.  This will overwrite the router's wifi config,
    asking for a `Y` confirmation before committing.
 8. Go back to http://192.168.8.1 and check that
@@ -145,6 +145,26 @@ This is very similar to just cloning the repo, but with extra steps!
    It will ask you to enter the version number and will then put together a release zip.
 
 8. Now go look at "Signing the Release" so you can put together a full release.
+
+
+_**Troubleshooting**_
+
+If you get 
+
+```
+!   Submodule 'scratch3-gui' .git is a directory not a file, see README.md
+```
+   
+from the `makerelease.sh` script, then run the git command
+
+```
+git submodule absorbgitdirs
+```
+
+Which will remove the `.git` directory in the submodules and place it within the root-level
+`.git` dir. This prevents the release ZIP from including all of the git history, which is
+large!
+
 
 
 Signing the Release!

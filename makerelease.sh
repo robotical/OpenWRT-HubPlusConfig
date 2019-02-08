@@ -5,12 +5,26 @@
 #echo "I   Deleting all .git files found...."
 #find ./ -name '.git*' -exec rm -rvf {} +
 
-if [ ! -d ./master ];
+if [ ! -d ./src ];
 then
-    echo "!   Can't see /master, don't have anywhere to build release from!"
+    echo "!   Can't see /src, don't have anywhere to build release from!"
     echo "!   Exiting..."
     exit 1
 fi
+
+# Check Submodules have been absorbed:
+if [ -d ./src/scratch3-gui/.git ];
+then
+    echo "!   Submodule 'scratch3-gui' .git is a directory not a file, see README.md"
+    exit 1
+fi
+
+if [ -d ./src/scratchx/.git ];
+then
+    echo "!   Submodule 'scratchx' .git is a directory not a file, see README.md"
+    exit 1
+fi
+    
 
 echo ""
 echo "I   Enter new release version"
@@ -39,10 +53,10 @@ else
     exit 3
 fi
 
-echo "I   Will Copy over files from ./master to ./release/$HUB_VERSION/"
+echo "I   Will Copy over files from ./src to ./release/$HUB_VERSION/"
 
 mkdir ./release/$HUB_VERSION
-cp -r ./master/* ./release/$HUB_VERSION
+cp -r ./src/* ./release/$HUB_VERSION
 cp ./.signing.pubkey ./release/.signing.pubkey
 
 # Overwrite VERSION file with this new version number

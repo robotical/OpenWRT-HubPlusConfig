@@ -1,6 +1,6 @@
 [submodule "master/scratch3-gui"]
-	path = master/scratch3-gui
+	path = src/scratch3-gui
 	url = git@github.com:robotical/scratch3-gui.git
 [submodule "master/scratchx"]
-	path = master/scratchx
+	path = src/scratchx
 	url = git@github.com:robotical/scratchx.git
