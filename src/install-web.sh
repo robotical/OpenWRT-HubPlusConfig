@@ -71,10 +71,11 @@ else
     echo "D   (/scripts already exists!)"
 fi
 
-echo "I       Copying list marty scripts to /scripts and /www/cgi-bin"
+echo "I       Copying scripts to /scripts and /www/cgi-bin"
 cp /mnt/sda1/$HUB_VERSION/parseMartys.awk /scripts/parseMartys.awk
 cp /mnt/sda1/$HUB_VERSION/list-martys /www/cgi-bin/list-martys
 cp /mnt/sda1/$HUB_VERSION/get-iprange /www/cgi-bin/get-iprange
+cp /mnt/sda1/$HUB_VERSION/what-hub-version /www/cgi-bin/what-hub-version
 
 echo "I   Adding Marty list script to /www/cgi-bin/list-martys"
 

@@ -1,0 +1,31 @@
+#!/bin/sh
+# Returns the Hub Version as a Simple HTML doc
+
+if [[ -d /mnt/sda1 && -f /mnt/sda1/VERSION ]];
+then
+    . /mnt/sda1/VERSION
+else
+    HUB_VERSION="unknown"
+fi
+
+
+echo "Cache-control: private, max-age=0, no-cache"
+echo "Access-Control-Allow-Origin: *"
+echo "Content-Type: text/html"
+echo ""
+echo ""
+echo "<!DOCTYPE html>"
+echo "<html><head><title>Hub Version</title>"
+echo "<style>"
+echo "body, html { padding: 0; margin: 0; background: none; text-align: center; color: #27788c; font-family: Lato, helvetica, helvetica-neue, Arial, sans-serif; font-size: 9.6px; font-weight: normal; text-transform: uppercase; letter-spacing: 0.1em;}"
+echo ".vers { font-size: 12px; }"
+echo "</style>"
+echo "</head><body>"
+echo "&mdash;<br>"
+echo "Hub Version<br>"
+echo "<span class=\"vers\">"
+echo $HUB_VERSION
+echo "</span><br>"
+echo "&mdash;"
+echo "</body></html>"
+
