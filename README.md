@@ -91,12 +91,11 @@ password and are comfortable + understand that the hub could, if miscounfigured,
 Updating your Command Hub (Normal Edition)
 ------------------------------------------
 
-Turn off the Hub, remove the SD card and insert it in to a computer. Copy the update files onto
+Turn off the Hub, remove the SD card and insert it in to a computer. Copy the [update files](https://github.com/robotical/OpenWRT-HubPlusConfig/releases) onto
 the SD card:
 
        /hub-update.zip
        /hub-update.zip.sig
-       /update.sh
 
 Then simply pop it back in the Hub and turn it back on. It should install the update on boot.
 
