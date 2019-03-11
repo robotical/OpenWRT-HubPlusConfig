@@ -47,8 +47,7 @@ Software Setup
 5. Once connected over SSH, **Set a root password**, this can be done like so: `passwd root -d "martyrocks"`.
 6. `cd` to the SD card, which is mounted at `/mnt/sda1`
 6. `cd` to main directory, which is at `/mnt/sda1/src` or `/mnt/sda1/<version>` for a release.
-7. Run the web install scripts: `./install.sh`.  This will overwrite the router's wifi config,
-   asking for a `Y` confirmation before committing.
+7. Run the web install scripts: `./install.sh`.
 8. Go back to http://192.168.8.1 and check that
    * The page now shows the command hub homepage
    * The link to ScratchX works and loads the extension properly
