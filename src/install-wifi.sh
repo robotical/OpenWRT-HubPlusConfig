@@ -51,7 +51,8 @@ then
 fi
 
 # save changes
-uci commit
+uci commit wireless
+uci commit network
 
 echo "I   Committed changes, see uci for more "
 echo "    options and current config."

@@ -3,16 +3,23 @@
 
 . ./VERSION
 
-echo ""
+echo "+   Adding DNS entries to DHCP config"
 
-# Only concat the first time iff backup hasn't been made
-if [ ! -f /etc/config.dhcp.backup ];
-then
-    echo "I   Copying /etc/config/dhcp to /etc/config.dhcp.backup"
-    cp /etc/config/dhcp /etc/config.dhcp.backup
-    echo "+   Concatenating ./dhcp-conf to the end of /etc/config/dhcp"
-    cat ./dhcp-conf >> /etc/config/dhcp
-else
-    echo "!   /etc/config.dhcp.backup backup exists, assume already installed..."
-fi
+uci set dhcp.dashboard=domain
+uci set dhcp.dashboard.name='hub.robotical.io'
+uci set dhcp.dashboard.ip='192.168.8.1'
+
+uci set dhcp.scratchlink=domain
+uci set dhcp.scratchlink.name='device-manager.scratch.mit.edu'
+uci set dhcp.scratchlink.ip='127.0.0.1'
+
+uci set dhcp.scratchcdn=domain
+uci set dhcp.scratchcdn.name='cdn.assets.scratch.mit.edu'
+uci set dhcp.scratchcdn.ip='192.168.8.1'
+
+uci set dhcp.scratchmain=domain
+uci set dhcp.scratchmain.name='scratch.mit.edu'
+uci set dhcp.scratchmain.ip='192.168.8.1'
+
+uci commit dhcp
 
