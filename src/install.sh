@@ -14,6 +14,6 @@ chmod +x /etc/init.d/robotical-check-update
 
 # Run other install scripts
 ./install-web.sh
+./install-dns.sh
 yes Y | ./install-wifi.sh
-./install-wifi.sh
 
