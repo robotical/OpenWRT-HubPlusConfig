@@ -184,7 +184,7 @@ utility. With the zip file copied onto the Hub, rename it to `hub-update.zip`:
 
 ```
 $ cd /mnt/sda1/
-$ mv OpenWRT-HubPlusConfig-0.0.0.zip hub-update.zip
+$ mv OpenWRT-HubPlusConfig-0.0.0.zip hub-update.zip hub-update.zip
 #                          ^^^ Replace with correct here
 ```
 
