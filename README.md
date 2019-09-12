@@ -1,3 +1,4 @@
+
 GL750M Install & Configure
 ===
 
@@ -122,27 +123,32 @@ Making a Release
 
 This is very similar to just cloning the repo, but with extra steps!
 
-1. Test that the hub works with this exact set of files! Do a full reset and install.
-2. Change `./VERSION` and increment the version number within. Take note of what the number is...
-3. Do what you can re. making updates painless, see `update.sh`
-4. Now make a new git tag with *just* the version number (1.1.0 shown as an example):
+1. Test that the hub works with this exact set of files! To do this you need to do a full reset and install.
+2. To check everything is working before making a release, copy the contents of `src/` onto the
+   SD card into a folder called `master/`, and also copy over `.signing.pubkey` to the top-level
+   of the SD card (*not* inside `master/`).
+3. Install from `master/install.sh` as you would any another release
+4. Once you've checked all is OK, you can proceed:
+5. Change `./VERSION` and increment the version number within. Take note of what the number is...
+6. Do what you can re. making updates painless, see `update.sh`
+7. Now make a new git tag with *just* the version number (1.1.0 shown as an example):
 
         git tag 1.1.0
 
-5. Push this tag to `origin`
+8. Push this tag to `origin`
 
         git push origin --tags
 
-6. This will add the tag on GitHub. Go find the tag, and open up the tag editor so we can turn
+9. This will add the tag on GitHub. Go find the tag, and open up the tag editor so we can turn
    it in to a GithUb release. Sadly the auto-generated source zips *won't* include the Git Submodules
    so a few steps are needed to make a working downloadable zip.
-7. To do this, run the `makerelease.sh` script:
-
+10. To do this, run the `makerelease.sh` script:
+    
         ./makerelease.sh
+        
+    It will ask you to enter the version number and will then put together a release zip.
 
-   It will ask you to enter the version number and will then put together a release zip.
-
-8. Now go look at "Signing the Release" so you can put together a full release.
+11. Now go look at "Signing the Release" so you can put together a full release.
 
 
 _**Troubleshooting**_
