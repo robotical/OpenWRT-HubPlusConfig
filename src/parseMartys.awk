@@ -11,8 +11,8 @@ BEGIN{
   if ($0 == "DHCP LEASES"){ dhcp = 1}                                      
   # first file, iwinfo               
   if (dhcp == 0){                                                                                
-    # every fourth line contains interesting info. TODO: look for MAC, rather than assuming lines
-    if (NR % 4 == 1)  {                                                                          
+    # look for MAC addresses
+    if (match($1, "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$")){
       # the interesting bits are the MAC, SNR, and last seen time 
       # the SNR has a ) on the end of it, so let's get rid of that
       snr = int(substr($8,1,length($8)-1))                        
