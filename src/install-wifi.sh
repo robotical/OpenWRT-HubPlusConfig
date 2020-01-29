@@ -27,6 +27,8 @@ uci set wireless.default_radio1.mode="ap"
 uci set wireless.default_radio1.encryption="psk-mixed"
 uci set wireless.default_radio1.ssid=$HUB_SSID_24
 uci set wireless.default_radio1.key=$HUB_WPA_24
+uci set wireless.radio1.channel='auto'
+uci set wireless.radio1.txpower='23'
 
 uci set network.lan.ipaddr=$HUB_LAN_IPADDR
 
