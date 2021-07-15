@@ -84,7 +84,7 @@ interfaces instead of the included ones. These online interfaces are more likely
 The Hub also offers many other configuration options, including VPN, UoPnP, USB Storage Sharing and
 DDNS support.
 
-**If you connect your Hub to a newtork** you *must* ensure you have secured its config, changed its
+**If you connect your Hub to a network** you *must* ensure you have secured its config, changed its
 password and are comfortable + understand that the hub could, if miscounfigured, cause problems.
 
 
