@@ -178,6 +178,8 @@ Signing the Release!
 reasons won't be shared... You can make your own by typing the following into a terminal
 on the Hub* `usign -G -p ./.signing.pubkey -s ./.signing.secret`. *Obviously, don't share it.*
 
+***Note to those who haven't done this before** The key is stored on lastpass 
+
 
 You have to do this bit from the command line on a hub, so as to have access to the `usign`
 utility. With the zip file copied onto the Hub, rename it to `hub-update.zip`:
@@ -189,7 +191,7 @@ $ mv OpenWRT-HubPlusConfig-0.0.0.zip hub-update.zip hub-update.zip
 ```
 
 Then create a signature (this will take approx. 10 seconds) and then verify that it
-works good (another 10s or so):
+works good (another 10s or so). Note: there will be no feedback from the first command, so wait manually 10 seconds, check with `ls` that there is now a file called `hub-update.zip.sig ` then you can run the second command. Otherwise you will get the output `Cannot open file './hub-update.zip.sig' for reading`
 
 ```
 $ usign -S -m ./hub-update.zip -s ./.signing.secret
